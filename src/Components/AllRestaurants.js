@@ -1,0 +1,30 @@
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { MEDIA_IMG_URL } from "../utils/constants";
+
+
+const Allrestaurants = () => {
+    const OnlineRestaurants = useSelector(store => store?.restaurants?.restaurants.restaurants);
+    return (
+        <>
+
+            {OnlineRestaurants.map((r) => (
+                <Link key={r.info.id} to={"/restaurant/" + r.info.id}>
+                    <div className="-ml-16 w-[388px] h-[380px] mt-24 cursor-pointer">
+                        <img
+                            className="rounded-3xl w-[303px] h-[246px] ml-20"
+                            src={MEDIA_IMG_URL + r.info.cloudinaryImageId} alt=""></img>
+                        <div className="ml-[100px]">
+                            <h3 className="font-bold text-xl  mt-5 overflow-hidden">{r.info.name}</h3>
+                            <p className="overflow-hidden text-ellipsis">{r.info.cuisines.join(',')}</p><span></span>
+                            <span className="font-bold">{r.info.sla.slaString}</span><span className="ml-2 font-bold">| {r.info.avgRating} ⭐ ratings</span>
+                            <p>{r.info.areaName}</p>
+                        </div>
+                    </div>
+                </Link>))}
+
+        </>
+    );
+}
+
+export default Allrestaurants;

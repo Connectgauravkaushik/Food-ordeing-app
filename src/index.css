@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#fadeInRight {
+    animation: fadeInRight 1s ease-in-out;
+  }
+  
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(300px);
+    }
+    to {
+      opacity: 1;
+    }
+  }
